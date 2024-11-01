@@ -2,6 +2,11 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import { FlightsTable } from './flights-table';
 import { mockFlightData } from '../../_mocks/flights.mock';
+import { appSettings } from '../../constants/app-settings';
+
+jest.mock('../../constants/app-settings', () => ({
+  appSettings: { schipholUrl: 'https://schiphol.nl' },
+}));
 
 describe('FlightsTable', () => {
   it('displays "No flights found" message when flights list is empty', async () => {
@@ -36,7 +41,7 @@ describe('FlightsTable', () => {
     await waitFor(() => {
       mockFlightData.forEach((flight) => {
         const link = getByTestId(`flight-link-${flight.flightIdentifier}`);
-        expect(link).toHaveAttribute('href', flight.url);
+        expect(link).toHaveAttribute('href', `${appSettings.schipholUrl}${flight.url}`);
         expect(link).toHaveAttribute('target', '_blank');
       });
     });

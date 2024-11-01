@@ -5,6 +5,7 @@ import { IFlight } from '../../types/flight.types';
 import Link from 'next/link';
 import { Button } from '@repo/ui/components/ui/button';
 import { SquareArrowOutUpRight } from 'lucide-react';
+import { appSettings } from '../../constants/app-settings';
 
 interface Props {
   flightsPromise: Promise<IFlight[]>;
@@ -61,7 +62,11 @@ export const FlightsTable = ({ flightsPromise }: Props) => {
                   )}
                 </TableCell>
                 <TableCell>
-                  <Link data-testid={`flight-link-${flight.flightIdentifier}`} href={`${flight.url}`} target="_blank">
+                  <Link
+                    data-testid={`flight-link-${flight.flightIdentifier}`}
+                    href={`${appSettings.schipholUrl}${flight.url}`}
+                    target="_blank"
+                  >
                     <Button className="flex gap-2" size="sm">
                       Visit
                       <SquareArrowOutUpRight size={16} />
