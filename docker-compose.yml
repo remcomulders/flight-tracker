@@ -1,0 +1,36 @@
+version: "3.8"
+
+x-defaults: &defaults
+    init: true
+    tty: true
+    networks:
+        - flight_tracker_network
+
+services:
+    web:
+        <<: *defaults
+        build:
+            context: .
+            dockerfile: ./apps/web/Dockerfile
+        container_name: flight-tracker-web
+        ports:
+            - "3000:3000"
+        environment:
+            - BASE_URL=http://flight-tracker-web:3000
+            - API_URL=http://flight-tracker-api:80
+            - SCHIPHOL_URL=https://schiphol.nl
+        depends_on:
+            - api
+
+    api:
+        <<: *defaults
+        image: clue/json-server
+        container_name: flight-tracker-api
+        command: flights.json
+        volumes:
+            - ./apps/api/flights.json:/data/flights.json
+        ports:
+            - "80:80"
+
+networks:
+    flight_tracker_network:

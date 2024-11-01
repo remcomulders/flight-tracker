@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gradient-to-r from-grey-few to-light-blue font-[family-name:var(--font-neue-frutiger)] text-schiphol-blue;
+}
