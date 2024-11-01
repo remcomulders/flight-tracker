@@ -30,20 +30,20 @@ describe('InputForm', () => {
     expect(getByTestId('reset-button')).toBeInTheDocument();
   });
 
-  it('sets the input default value based on the destination query parameter', () => {
+  it('sets the input default value based on the airport query parameter', () => {
     mockSearchParamsGet.mockReturnValue('amsterdam');
     const { getByTestId } = render(<InputForm />);
     expect(getByTestId('airport-input')).toHaveValue('amsterdam');
   });
 
-  it('updates the destination query parameter when input has 3 or more characters', async () => {
+  it('updates the airport query parameter when input has 3 or more characters', async () => {
     const { getByTestId } = render(<InputForm />);
     const input = getByTestId('airport-input');
 
     fireEvent.change(input, { target: { value: 'london' } });
 
     await waitFor(() => {
-      expect(mockRouterReplace).toHaveBeenCalledWith('?destination=london', { scroll: false });
+      expect(mockRouterReplace).toHaveBeenCalledWith('?airport=london', { scroll: false });
     });
   });
 

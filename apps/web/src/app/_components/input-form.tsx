@@ -13,10 +13,10 @@ export const InputForm = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const destination = searchParams.get('destination');
+  const airport = searchParams.get('airport');
 
   const debouncedInput = useDebounce((value: string) => {
-    router.replace(value.length >= 3 ? `?destination=${value}` : '/', {
+    router.replace(value.length >= 3 ? `?airport=${value}` : '/', {
       scroll: false,
     });
   }, 300);
@@ -54,7 +54,7 @@ export const InputForm = () => {
             ref={inputRef}
             data-testid="airport-input"
             placeholder="Where is your flight coming from?"
-            defaultValue={destination ?? ''}
+            defaultValue={airport ?? ''}
             onChange={onChange}
           />
         </div>
