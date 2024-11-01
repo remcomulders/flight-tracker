@@ -23,6 +23,7 @@
     "lint": "eslint . --max-warnings 0",
     "test": "jest",
     "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
+    "build": "tailwindcss -i ./src/styles.css -o dist/index.css",
     "generate:component": "turbo gen react-component"
   },
   "devDependencies": {
