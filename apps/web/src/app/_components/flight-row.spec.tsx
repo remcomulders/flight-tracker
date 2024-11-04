@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { FlightRow } from './flight-row';
 import '@testing-library/jest-dom';
 import { appSettings } from '../../constants/app-settings';
