@@ -1,6 +1,17 @@
 import { IFlight } from '../types/flight.types';
 
-export const mockFlightData: IFlight[] = [
+export const mockFlightData: IFlight = {
+  flightIdentifier: 'D20190401UA969',
+  flightNumber: 'UA 969',
+  airport: 'San Francisco',
+  date: '2022-02-23',
+  expectedTime: '15:50',
+  originalTime: '15:55',
+  url: '/en/departures/flight/D20190401UA969',
+  score: '70.55272',
+};
+
+export const mockFlightsData: IFlight[] = [
   {
     flightIdentifier: 'D20190401UA969',
     flightNumber: 'UA 969',

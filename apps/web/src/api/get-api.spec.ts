@@ -1,4 +1,4 @@
-import { mockFlightData } from '../_mocks/flights.mock';
+import { mockFlightsData } from '../_mocks/flights.mock';
 import { getApi } from './get-api';
 
 jest.mock('../constants/app-settings', () => ({
@@ -9,7 +9,7 @@ describe('getApi', () => {
   beforeEach(() => {
     global.fetch = jest.fn(() =>
       Promise.resolve({
-        json: () => Promise.resolve(mockFlightData),
+        json: () => Promise.resolve(mockFlightsData),
       })
     ) as jest.Mock;
   });
@@ -35,7 +35,7 @@ describe('getApi', () => {
     const api = getApi();
     const result = await api.get('/flights');
 
-    expect(result).toEqual(mockFlightData);
+    expect(result).toEqual(mockFlightsData);
   });
 
   it('allows overriding the baseUrl', async () => {
